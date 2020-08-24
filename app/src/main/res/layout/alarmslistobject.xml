@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/rpd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="repeatdays"
+        app:layout_constraintBottom_toBottomOf="@+id/time"
+        app:layout_constraintEnd_toStartOf="@+id/switchw"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/time"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8" />
+
+    <Switch
+        android:id="@+id/switchw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:thumbTint="@color/colorAccent"
+        android:trackTint="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="@+id/time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/time" />
+
+    <Button
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="?android:selectableItemBackground"
+        android:text="00:00"
+        android:textAlignment="viewStart"
+        android:textSize="36sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/edit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/switchw"
+        app:layout_constraintStart_toStartOf="@+id/time"
+        app:layout_constraintTop_toBottomOf="@+id/time"
+        app:layout_constraintVertical_bias="0.0">
+
+        <Switch
+            android:id="@+id/wakecheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:text="Enable Awake Check"
+            android:thumbTint="@color/colorAccent"
+            android:trackTint="@color/colorAccent"
+            app:layout_constraintBottom_toBottomOf="@+id/ringerbtn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ringerbtn" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Repeat Mode : "
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="@+id/repeatbtn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ToggleButton
+            android:id="@+id/repeatbtn"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:background="@android:color/transparent"
+            android:backgroundTintMode="screen"
+            android:textOff="Once"
+            android:textOn="Repeat"
+            android:textSize="12sp"
+            app:layout_constraintStart_toEndOf="@+id/textView5"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TableRow
+            android:id="@+id/repeatobjs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/repeatbtn"
+            app:layout_constraintTop_toTopOf="@+id/repeatbtn">
+
+            <ToggleButton
+                android:id="@+id/w1"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:backgroundTintMode="screen"
+                android:text="M"
+                android:textOff="M"
+                android:textOn="M"
+                android:textSize="10sp" />
+
+            <ToggleButton
+                android:id="@+id/w2"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:backgroundTintMode="screen"
+                android:text="T"
+                android:textOff="T"
+                android:textOn="T"
+                android:textSize="10sp" />
+
+            <ToggleButton
+                android:id="@+id/w3"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:backgroundTintMode="screen"
+                android:text="W"
+                android:textOff="W"
+                android:textOn="W"
+                android:textSize="10sp" />
+
+            <ToggleButton
+                android:id="@+id/w4"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:backgroundTintMode="screen"
+                android:text="Th"
+                android:textOff="Th"
+                android:textOn="Th"
+                android:textSize="10sp" />
+
+            <ToggleButton
+                android:id="@+id/w5"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:backgroundTintMode="screen"
+                android:text="F"
+                android:textOff="F"
+                android:textOn="F"
+                android:textSize="10sp" />
+
+            <ToggleButton
+                android:id="@+id/w6"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:backgroundTintMode="screen"
+                android:text="Sa"
+                android:textOff="Sa"
+                android:textOn="Sa"
+                android:textSize="10sp" />
+
+            <ToggleButton
+                android:id="@+id/w7"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:backgroundTintMode="screen"
+                android:text="S"
+                android:textOff="S"
+                android:textOn="S"
+                android:textSize="10sp" />
+        </TableRow>
+
+        <Button
+            android:id="@+id/ringerbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="?android:selectableItemBackground"
+            android:text="Select Ringer"
+            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintTop_toBottomOf="@+id/repeatbtn" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toBottomOf="@+id/ringerbtn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ringerbtn"
+            app:srcCompat="@drawable/music" />
+
+        <ImageButton
+            android:id="@+id/cbtn"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?android:selectableItemBackgroundBorderless"
+            android:scaleType="fitCenter"
+            app:layout_constraintEnd_toEndOf="@+id/wakecheck"
+            app:layout_constraintTop_toBottomOf="@+id/ringerbtn"
+            app:srcCompat="@drawable/closebtn" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
