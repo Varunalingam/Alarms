@@ -50,7 +50,7 @@ public class BackgroundService extends Service {
 
         }
 
-        Intent notificationIntent = new Intent(this, AlarmNotification.class);
+        Intent notificationIntent = new Intent(this, MainActivity.class);
 
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
                 notificationIntent, 0);
