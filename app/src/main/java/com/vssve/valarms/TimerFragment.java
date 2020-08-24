@@ -3,6 +3,8 @@ package com.vssve.valarms;
 import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.LayoutInflater;
@@ -193,6 +195,16 @@ public class TimerFragment extends Fragment {
                 tableLayout.setVisibility(View.VISIBLE);
                 addbtn.setVisibility(View.GONE);
                 PlayButton.setVisibility(View.INVISIBLE);
+
+                final Ringtone A = RingtoneManager.getRingtone(getContext(),RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM));
+                A.play();
+                Handler s = new Handler();
+                s.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        A.stop();
+                    }
+                },2000);
             }
         }
     }

@@ -28,5 +28,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.getTabAt(1).setIcon(R.drawable.alarms);
         tabLayout.getTabAt(2).setIcon(R.drawable.timer);
 
+        tabLayout.selectTab(tabLayout.getTabAt(1));
+
     }
 }

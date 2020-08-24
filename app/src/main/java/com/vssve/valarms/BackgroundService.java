@@ -34,7 +34,7 @@ public class BackgroundService extends Service {
     }
 
     public static final String ANDROID_CHANNEL_NAME = "Background Service";
-    public static final String ANDROID_CHANNEL_ID = "com.vssve.smsschduler";
+    public static final String ANDROID_CHANNEL_ID = "com.vssve.alarms.service";
 
     private void startForeground() {
 
@@ -50,7 +50,7 @@ public class BackgroundService extends Service {
 
         }
 
-        Intent notificationIntent = new Intent(this, MainActivity.class);
+        Intent notificationIntent = new Intent(this, AlarmNotification.class);
 
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
                 notificationIntent, 0);
@@ -58,7 +58,7 @@ public class BackgroundService extends Service {
         startForeground(NOTIF_ID, new NotificationCompat.Builder(this,
                 ANDROID_CHANNEL_ID) // don't forget create a notification channel first
                 .setOngoing(true)
-                .setSmallIcon(R.drawable.ic_launcher_foreground)
+                .setSmallIcon(R.drawable.iconnoti)
                 .setContentTitle(getString(R.string.app_name))
                 .setContentText("Alarms is running in background")
                 .setContentIntent(pendingIntent)

@@ -1,8 +1,13 @@
 package com.vssve.valarms;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,7 +65,7 @@ public class AlarmsFragment extends Fragment {
 
                         for (int j = 0; j < S.getInt("Total",0 );j++)
                         {
-                            if (S.getInt("Hour" + i,0) == hour && S.getInt("Minute" + i,0) == min)
+                            if (S.getInt("Hour" + j,0) == hour && S.getInt("Minute" + j,0) == min)
                             {
                                 check = true;
                                 Toast.makeText(getContext(),"Alarm At " + String.format("%02d:%02d",hour,min) + " is Already set",Toast.LENGTH_SHORT).show();
@@ -78,13 +83,43 @@ public class AlarmsFragment extends Fragment {
                             E.putBoolean("state" + j, true);
                             E.putBoolean("repeat" + j, false);
                             E.putBoolean("wakecheck" + j , false);
-                            E.putString("ringer" + j, "def");
-                            E.putString("days" + j, ",");
+                            E.putString("ringer" + j, RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM).toString());
+
+                            int day = Calendar.getInstance().getTime().getDay();
+
+                            String[] days = new String[]{"S","M","T","W","Th","F","Sa"};
+
                             E.putInt("Total",j + 1);
+
+                            //AlarmMgr
+                            Intent intent = new Intent(getContext(),Reciever.class);
+                            intent.putExtra("id",j);
+
+                            PendingIntent pendingIntent = PendingIntent.getBroadcast(getContext(),j,intent,0);
+
+                            AlarmManager Al = (AlarmManager) getContext().getSystemService(Context.ALARM_SERVICE);
+
+                            Calendar cal = Calendar.getInstance();
+                            cal.set(Calendar.HOUR,hour);
+                            cal.set(Calendar.MINUTE,min);
+                            cal.set(Calendar.SECOND,0);
+
+                            if (cal.getTimeInMillis() < Calendar.getInstance().getTimeInMillis())
+                            {
+                                cal.add(Calendar.DATE,1);
+                                E.putString("days" + j, "," +days[day + 1] + ",");
+                            }
+                            else
+                            {
+                                E.putString("days" + j, "," +days[day] + ",");
+                            }
+
+                            Al.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,cal.getTimeInMillis(),pendingIntent);
+
                             E.commit();
                             alarms.setAdapter(new AlarmsListAdapter(getContext()));
-                            Toast.makeText(getContext(),"Alarm at " + String.format("%02d:%02d",hour,min) + "is Set",Toast.LENGTH_SHORT ).show();
-                            //AlarmMgr
+
+                            Toast.makeText(getContext(),"Alarm at " + String.format("%02d:%02d",hour,min) + " is Set on " + new String[]{"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"}[cal.getTime().getDay()],Toast.LENGTH_SHORT ).show();
                         }
 
 

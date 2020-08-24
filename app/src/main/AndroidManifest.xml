@@ -2,10 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.vssve.valarms">
 
-    <uses-permission android:name="android.permission.WAKE_LOCK"></uses-permission>
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"></uses-permission>
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"></uses-permission>
-    <uses-permission android:name="android.permission.SET_ALARM"></uses-permission>
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.SET_ALARM" />
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
 
     <application
         android:name=".BackgroundProcess"
@@ -15,6 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".AlarmNotification"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,8 +24,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".BackgroundService"></service>
-        <receiver android:name=".Reciever"></receiver>
+
+        <service android:name=".BackgroundService" />
+
+        <receiver android:name=".Reciever" />
     </application>
 
 </manifest>
