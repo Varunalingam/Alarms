@@ -144,7 +144,7 @@ public class Reciever extends BroadcastReceiver {
                                 Al.cancel(pendingIntent);
 
                                 Calendar cal = Calendar.getInstance();
-                                cal.set(Calendar.HOUR, hour);
+                                cal.set(Calendar.HOUR_OF_DAY, hour);
                                 cal.set(Calendar.MINUTE, min);
                                 cal.set(Calendar.SECOND, 0);
 
@@ -206,7 +206,7 @@ public class Reciever extends BroadcastReceiver {
                                 AlarmManager Al = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
                                 Calendar cal = Calendar.getInstance();
-                                cal.set(Calendar.HOUR, h);
+                                cal.set(Calendar.HOUR_OF_DAY, h);
                                 cal.set(Calendar.MINUTE, m);
                                 cal.set(Calendar.SECOND, 0);
                                 Al.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pendingIntent);
@@ -303,7 +303,7 @@ public class Reciever extends BroadcastReceiver {
         AlarmManager Al = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
 
         Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.HOUR,hour);
+        cal.set(Calendar.HOUR_OF_DAY,hour);
         cal.set(Calendar.MINUTE,min);
         cal.set(Calendar.SECOND,0);
 

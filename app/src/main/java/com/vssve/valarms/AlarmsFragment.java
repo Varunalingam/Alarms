@@ -9,6 +9,7 @@ import android.content.SharedPreferences;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -100,9 +101,13 @@ public class AlarmsFragment extends Fragment {
                             AlarmManager Al = (AlarmManager) getContext().getSystemService(Context.ALARM_SERVICE);
 
                             Calendar cal = Calendar.getInstance();
-                            cal.set(Calendar.HOUR,hour);
+                            Log.d("work", hour + " " + min);
+                            cal.set(Calendar.HOUR_OF_DAY,hour);
                             cal.set(Calendar.MINUTE,min);
                             cal.set(Calendar.SECOND,0);
+
+                            Log.d("work",cal.getTime().toString());
+                            Log.d("work",Calendar.getInstance().getTime().toString());
 
                             if (cal.getTimeInMillis() < Calendar.getInstance().getTimeInMillis())
                             {
@@ -118,7 +123,6 @@ public class AlarmsFragment extends Fragment {
 
                             E.commit();
                             alarms.setAdapter(new AlarmsListAdapter(getContext()));
-
                             Toast.makeText(getContext(),"Alarm at " + String.format("%02d:%02d",hour,min) + " is Set on " + new String[]{"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"}[cal.getTime().getDay()],Toast.LENGTH_SHORT ).show();
                         }
 
